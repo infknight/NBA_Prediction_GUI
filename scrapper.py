@@ -36,7 +36,6 @@ def espn_stats_table():
     for data in soup.find_all('span', {'class' : 'stat-cell'}):
         team_stat=[]
         team_stat.append(''.join(data.findAll(text=True))) # Find all the text in the class tag
-
-    # return team_stat
+    # return team_stat as a hash map
 
 espn_stats_table()
