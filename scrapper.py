@@ -30,12 +30,32 @@ def espn_team_name():
 
 def espn_stats_table():
     soup = request('https://www.espn.com/nba/standings')
-    header = soup.find_all('span', {'class' : 'fw-medium w-100 dib tar subHeader__item--content underline'}, )
-    print(header)
+    # find the header for the table
+    header = []
+    counter = 0
+    # parsed the data header to
+    for data in soup.find_all('th', {'class' : 'tar subHeader__item--content Table__TH'}, ):
+        header.append(data.text)
+        counter+=1
+        if counter >= 14:
+            break
+    header.pop(0)
+
+    team_stat=[]
     # parsed all the data points
     for data in soup.find_all('span', {'class' : 'stat-cell'}):
-        team_stat=[]
-        team_stat.append(''.join(data.findAll(text=True))) # Find all the text in the class tag
-    # return team_stat as a hash map
+        temp = (''.join(data.findAll(text=True)))
+        team_stat.append(temp) # Find all the text in the class tag
+
+    list_of_dict = []
+    # Create 30 hash's name for each team's stat
+    for i in range(30):
+        name = "team" + str(i)
+        name = dict()
+        name = {header[j%13] : team_stat[13*i+j%len(team_stat)] for j in range(13)}
+        list_of_dict.append(name)
+
+    print(len(list_of_dict))
+    return list_of_dict
 
 espn_stats_table()
