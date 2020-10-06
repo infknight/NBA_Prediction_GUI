@@ -59,13 +59,15 @@ class NBA_Stats_Scraper:
             list_of_dict.append(name)
         return list_of_dict
 
-    def final_stats(self,team_name, team_stats):
+    def final_stats(self):
+        team_name = self.espn_team_name()
+        team_stats = self.espn_stats_table()
         stats = {}
         stats = dict(zip(team_name, team_stats))
-        print (str(stats))
+        # print (str(stats))
         return stats
 
-
+'''
 def main():
     nba = NBA_Stats_Scraper()
     team = nba.espn_team_name()
@@ -74,3 +76,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
