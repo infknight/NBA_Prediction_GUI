@@ -11,7 +11,6 @@ class NBA_Stats_Scraper:
         soup = BeautifulSoup(page.content, 'html.parser')
         return soup
 
-
     def espn_team_name_standing(self, URL):
         soup = self.request(URL)
         # String of all the teams
