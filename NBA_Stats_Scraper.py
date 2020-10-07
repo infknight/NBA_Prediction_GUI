@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
+standing_URL = 'https://www.espn.com/nba/standings'
+tradition_stats_URL = 'https://www.espn.com/nba/stats/team/_/season/2020/seasontype/2'
 
 class NBA_Stats_Scraper:
 
@@ -10,8 +12,8 @@ class NBA_Stats_Scraper:
         return soup
 
 
-    def espn_team_name(self):
-        soup = self.request('https://www.espn.com/nba/standings')
+    def espn_team_name_standing(self, URL):
+        soup = self.request(URL)
         # String of all the teams
         team_name_class = soup.find_all("abbr")
         team_name_list = []
@@ -31,7 +33,7 @@ class NBA_Stats_Scraper:
         # returns a dictionary key is the team name and none as its value
         return res
 
-    def espn_stats_table(self):
+    def espn_stats_table_standing(self):
         soup = self.request('https://www.espn.com/nba/standings')
         # find the header for the table
         header = []
@@ -59,21 +61,39 @@ class NBA_Stats_Scraper:
             list_of_dict.append(name)
         return list_of_dict
 
-    def final_stats(self):
-        team_name = self.espn_team_name()
-        team_stats = self.espn_stats_table()
+    def espn_team_name_traditional(self, URL):
+        soup = self.request(URL)
+        res = {}
+        team_name= []
+        team_name_str = soup.find_all('img',{'class':'Image Logo Logo__sm'})
+        for x in team_name_str:
+            team_name.append(str(x))
+        team = []
+        for i in team_name:
+            index_first = i.find("title=")
+            index_last = i.rfind('"')
+            # parse the string between first find the title= and last " .
+            team.append(i[index_first + 7:index_last])
+        res = dict.fromkeys(team)
+        return res
+
+
+    def final_stats_standing(self, team_name, team_stats):
+        # team_name = self.espn_team_name_standing(standing_URL)
+        # team_stats = self.espn_stats_table()
         stats = {}
         stats = dict(zip(team_name, team_stats))
         # print (str(stats))
         return stats
 
-'''
+
+
+
 def main():
     nba = NBA_Stats_Scraper()
-    team = nba.espn_team_name()
-    stats = nba.espn_stats_table()
-    table = nba.final_stats(team, stats)
+    team = nba.espn_team_name_traditional(tradition_stats_URL)
+    print (team)
+
 
 if __name__ == "__main__":
     main()
-'''
