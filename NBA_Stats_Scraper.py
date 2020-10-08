@@ -32,8 +32,8 @@ class NBA_Stats_Scraper:
         # returns a dictionary key is the team name and none as its value
         return res
 
-    def espn_stats_table_standing(self):
-        soup = self.request('https://www.espn.com/nba/standings')
+    def espn_stats_table_standing(self, URL):
+        soup = self.request(URL)
         # find the header for the table
         header = []
         counter = 0
@@ -68,6 +68,8 @@ class NBA_Stats_Scraper:
         for x in team_name_str:
             team_name.append(str(x))
         team = []
+
+        # getting all the team's name
         for i in team_name:
             index_first = i.find("title=")
             index_last = i.rfind('"')
@@ -75,6 +77,10 @@ class NBA_Stats_Scraper:
             team.append(i[index_first + 7:index_last])
         res = dict.fromkeys(team)
         return res
+
+    def espn_stats_table_traditional(self, URL):
+        
+
 
 
     def final_stats_standing(self, team_name, team_stats):
