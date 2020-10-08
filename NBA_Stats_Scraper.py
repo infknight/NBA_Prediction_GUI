@@ -52,10 +52,9 @@ class NBA_Stats_Scraper:
             team_stat.append(temp) # Find all the text in the class tag
 
         list_of_dict = []
+
         # Create 30 hash's name for each team's stat
         for i in range(30):
-            name = "team" + str(i)
-            name = dict()
             name = {header[j%13] : team_stat[13*i+j%len(team_stat)] for j in range(13)}
             list_of_dict.append(name)
         return list_of_dict
@@ -79,7 +78,24 @@ class NBA_Stats_Scraper:
         return res
 
     def espn_stats_table_traditional(self, URL):
-        
+        soup = self.request(URL)
+        header = []
+        for data in soup.find_all('th', {'class' : 'Table__TH'}):
+            header.append(data.text)
+        # we not want the first 2 arguments; therefore, we poped it.
+        header.pop(0)
+        header.pop(0)
+
+        count = 0
+        stats = []
+        for data in soup.find_all('td',{'class': 'Table__TD'}):
+            temp = (''.join(data.findAll(text=True)))
+            if count > 59:
+                stats.append(temp)
+            # print (''.join(data.findAll(text=True)))
+            count+=1
+
+        print (len(stats))
 
 
 
@@ -96,7 +112,7 @@ class NBA_Stats_Scraper:
 
 def main():
     nba = NBA_Stats_Scraper()
-    team = nba.espn_team_name_traditional(tradition_stats_URL)
+    team = nba.espn_stats_table_standing(standing_URL)
     print (team)
 
 
