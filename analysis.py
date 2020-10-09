@@ -20,13 +20,27 @@ def get_name():
     x = int(x)
     return name_list[x - 1]
 
-print (get_name())
+# print (total_team_stats.get(get_name()).get("W"))
 
 # oop class called team score that use fuzzy logic algorithms to compute some numbers
 class team_score:
-    team_name = get_name()
     # input name and get all the scores I need
-    def __init__(self, name):
+    # team_name = get_name()
+    # team = None
+    # def __init__(self, team_name=get_name()):
+    #     self.team = team_name
+    #     PCT = total_team_stats.get(get_name())
+    #
+    # def __str__(self):
+    #     return self.name, self.PCT
+
+def main():
+    print (1)
+
+if __name__ == "__main__":
+    main()
+
+
 
 
 
