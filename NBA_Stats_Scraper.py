@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-from collections import Counter
 
 standing_URL = 'https://www.espn.com/nba/standings'
 tradition_stats_URL = 'https://www.espn.com/nba/stats/team/_/season/2020/seasontype/2'
@@ -102,21 +101,26 @@ class NBA_Stats_Scraper:
             list_of_dict.append(name)
         return list_of_dict
 
-
     def stats_combine(self, team_name, team_stats):
-        # team_name = self.espn_team_name_standing(standing_URL)
-        # team_stats = self.espn_stats_table()
         stats = {}
         stats = dict(zip(team_name, team_stats))
-        # print (str(stats))
         return stats
 
-    def hash_combine_helper(self, dictA, dictB):
-        ds = [dictA, dictB]
-        final_dict = {}
-        for k in dictA.keys():
-            final_dict[k] = tuple(final_dict[k] for final_dict in ds)
-        return final_dict
+    def hash_combine_helper(self, dictA, dictB, path = None):
+
+        if path is None: path = []
+        for key in dictB:
+            if key in dictA:
+                if isinstance(dictA[key], dict) and isinstance(dictB[key], dict):
+                    self.hash_combine_helper(dictA[key], dictB[key], path + [str(key)])
+                elif dictA[key] == dictB[key]:
+                    pass
+                else:
+                    raise Exception('Conflict at %s' % '.'.join(path + [str(key)]))
+            else:
+                dictA[key] = dictB[key]
+        return dictA
+
 
 def main():
     nba = NBA_Stats_Scraper()
@@ -129,7 +133,8 @@ def main():
     team_traditional_total = nba.stats_combine(team_traditional, team_traditional_stats)
 
     team_all_stats = nba.hash_combine_helper(team_standing_total, team_traditional_total)
-    print (team_all_stats.get("Houston Rockets"))
+    print(len(team_all_stats))
+    # print ((team_all_stats.get("Houston Rockets")))
 
 
 
