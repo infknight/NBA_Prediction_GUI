@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from collections import Counter
 
 standing_URL = 'https://www.espn.com/nba/standings'
 tradition_stats_URL = 'https://www.espn.com/nba/stats/team/_/season/2020/seasontype/2'
@@ -95,11 +96,14 @@ class NBA_Stats_Scraper:
             # print (''.join(data.findAll(text=True)))
             count+=1
 
-        print (len(stats))
+        list_of_dict = []
+        for i in range(30):
+            name = {header[j%19] : stats[19*i+j%len(stats)] for j in range(19)}
+            list_of_dict.append(name)
+        return list_of_dict
 
 
-
-    def final_stats_standing(self, team_name, team_stats):
+    def stats_combine(self, team_name, team_stats):
         # team_name = self.espn_team_name_standing(standing_URL)
         # team_stats = self.espn_stats_table()
         stats = {}
@@ -107,13 +111,27 @@ class NBA_Stats_Scraper:
         # print (str(stats))
         return stats
 
-
-
+    def hash_combine_helper(self, dictA, dictB):
+        ds = [dictA, dictB]
+        final_dict = {}
+        for k in dictA.keys():
+            final_dict[k] = tuple(final_dict[k] for final_dict in ds)
+        return final_dict
 
 def main():
     nba = NBA_Stats_Scraper()
-    team = nba.espn_stats_table_standing(standing_URL)
-    print (team)
+    team_standing = nba.espn_team_name_standing(standing_URL)
+    team_standing_stats = nba.espn_stats_table_standing(standing_URL)
+    team_standing_total = nba.stats_combine(team_standing, team_standing_stats)
+
+    team_traditional = nba.espn_team_name_traditional(tradition_stats_URL)
+    team_traditional_stats = nba.espn_stats_table_traditional(tradition_stats_URL)
+    team_traditional_total = nba.stats_combine(team_traditional, team_traditional_stats)
+
+    team_all_stats = nba.hash_combine_helper(team_standing_total, team_traditional_total)
+    print (team_all_stats.get("Houston Rockets"))
+
+
 
 
 if __name__ == "__main__":
