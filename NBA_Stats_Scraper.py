@@ -121,6 +121,19 @@ class NBA_Stats_Scraper:
                 dictA[key] = dictB[key]
         return dictA
 
+    def get_all_stats(self):
+        nba = NBA_Stats_Scraper()
+        team_standing = nba.espn_team_name_standing(standing_URL)
+        team_standing_stats = nba.espn_stats_table_standing(standing_URL)
+        team_standing_total = nba.stats_combine(team_standing, team_standing_stats)
+
+        team_traditional = nba.espn_team_name_traditional(tradition_stats_URL)
+        team_traditional_stats = nba.espn_stats_table_traditional(tradition_stats_URL)
+        team_traditional_total = nba.stats_combine(team_traditional, team_traditional_stats)
+
+        team_all_stats = nba.hash_combine_helper(team_standing_total, team_traditional_total)
+        return team_all_stats
+
 
 def main():
     nba = NBA_Stats_Scraper()
@@ -133,11 +146,7 @@ def main():
     team_traditional_total = nba.stats_combine(team_traditional, team_traditional_stats)
 
     team_all_stats = nba.hash_combine_helper(team_standing_total, team_traditional_total)
-    print(len(team_all_stats))
-    # print ((team_all_stats.get("Houston Rockets")))
-
-
-
+    print ((team_all_stats.get("Houston Rockets").get("W")))
 
 if __name__ == "__main__":
     main()
