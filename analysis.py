@@ -25,17 +25,31 @@ def get_name():
 # oop class called team score that use fuzzy logic algorithms to compute some numbers
 class team_score:
     # input name and get all the scores I need
-    # team_name = get_name()
-    # team = None
-    # def __init__(self, team_name=get_name()):
-    #     self.team = team_name
-    #     PCT = total_team_stats.get(get_name())
-    #
-    # def __str__(self):
-    #     return self.name, self.PCT
+    team_name = None
+    win_percentage = 0.0 # PCT
+    field_goal_pt = 0.0 # FG%
+    turn_over = 0.0 # TO
+    rebound = 0.0 # REB
+    free_throw = 0.0 # FT%
+
+    # constructor takes 1 parameter 
+    def __init__(self, team):
+        self.team_name = team
+        self.win_percentage = total_team_stats.get(team).get("PCT")
+        self.field_goal_pt = total_team_stats.get(team).get("FG%")
+        self.turn_over = total_team_stats.get(team).get("TO")
+        self.rebound = total_team_stats.get(team).get("REB")
+        self.free_throw = total_team_stats.get(team).get("FT%")
+
+    # the toString function
+
+    def __str__(self):
+        return self.team_name + "\n" + self.win_percentage  + "\n" + self.field_goal_pt + "\n" + self.turn_over + "\n" + self.rebound + "\n" + self.free_throw
+
 
 def main():
-    print (1)
+    t1 = team_score(get_name())
+    print (t1)
 
 if __name__ == "__main__":
     main()
