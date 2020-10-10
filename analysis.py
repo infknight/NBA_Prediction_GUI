@@ -32,7 +32,7 @@ class team_score:
     rebound = 0.0 # REB
     free_throw = 0.0 # FT%
 
-    # constructor takes 1 parameter 
+    # constructor takes 1 parameter
     def __init__(self, team):
         self.team_name = team
         self.win_percentage = total_team_stats.get(team).get("PCT")
