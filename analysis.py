@@ -3,7 +3,11 @@ from math import *
 
 nba_class = NBA_Stats_Scraper()
 total_team_stats = nba_class.get_all_stats()
+opp_stats = nba_class.get_opp_stats()
 
+
+def convert_float_type(self, x):
+    return float(x)
 
 def get_name():
     i = 1
@@ -41,11 +45,9 @@ class team_score:
         self.rebound = total_team_stats.get(team).get("REB")
         self.free_throw = total_team_stats.get(team).get("FT%")
 
-    def convert_float_type(self, x):
-        return float(x)
-
     def four_factor_analysis(self):
-        return self.convert_float_type(self.field_goal_pt) * 0.4 + self.convert_float_type(self.turn_over) * 0.25 + self.convert_float_type(self.rebound) * 0.2 + self.convert_float_type(self.free_throw) * 0.15
+        projected_wins = 40 * convert_float_type()
+        # return self.convert_float_type(self.field_goal_pt) * 0.4 + self.convert_float_type(self.turn_over) * 0.25 + self.convert_float_type(self.rebound) * 0.2 + self.convert_float_type(self.free_throw) * 0.15
         # return float(self.field_goal_pt) * 0.4 + float(self.turn_over) * 0.25 + float(self.rebound * 0.2) + float(self.free_throw) * 0.15
 
 
