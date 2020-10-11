@@ -36,6 +36,11 @@ class team_score:
     rebound = 0.0 # REB
     free_throw = 0.0 # FT%
 
+    opp_field_goal_pt = 0.0 # FG%
+    opp_turn_over = 0.0 # TO
+    opp_rebound = 0.0 # REB
+    opp_free_throw = 0.0 # FT%
+
     # constructor takes 1 parameter
     def __init__(self, team):
         self.team_name = team
@@ -44,9 +49,16 @@ class team_score:
         self.turn_over = total_team_stats.get(team).get("TO")
         self.rebound = total_team_stats.get(team).get("REB")
         self.free_throw = total_team_stats.get(team).get("FT%")
+        # this is the opponent stats
+        self.opp_field_goal_pt = opp_stats.get(team).get("FG%")
+        self.opp_turn_over = opp_stats.get(team).get("TO")
+        self.opp_rebound = opp_stats.get(team).get("REB")
+        self.opp_free_throw = opp_stats.get(team).get("FT%")
+
+
 
     def four_factor_analysis(self):
-        projected_wins = 40 * convert_float_type()
+        projected_wins = 40 * convert_float_type(self.field_goal_pt)
         # return self.convert_float_type(self.field_goal_pt) * 0.4 + self.convert_float_type(self.turn_over) * 0.25 + self.convert_float_type(self.rebound) * 0.2 + self.convert_float_type(self.free_throw) * 0.15
         # return float(self.field_goal_pt) * 0.4 + float(self.turn_over) * 0.25 + float(self.rebound * 0.2) + float(self.free_throw) * 0.15
 
