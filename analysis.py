@@ -41,15 +41,24 @@ class team_score:
         self.rebound = total_team_stats.get(team).get("REB")
         self.free_throw = total_team_stats.get(team).get("FT%")
 
-    # the toString function
+    def convert_float_type(self, x):
+        return float(x)
 
+    def four_factor_analysis(self):
+        return self.convert_float_type(self.field_goal_pt) * 0.4 + self.convert_float_type(self.turn_over) * 0.25 + self.convert_float_type(self.rebound) * 0.2 + self.convert_float_type(self.free_throw) * 0.15
+        # return float(self.field_goal_pt) * 0.4 + float(self.turn_over) * 0.25 + float(self.rebound * 0.2) + float(self.free_throw) * 0.15
+
+
+    # the toString function
     def __str__(self):
         return self.team_name + "\n" + self.win_percentage  + "\n" + self.field_goal_pt + "\n" + self.turn_over + "\n" + self.rebound + "\n" + self.free_throw
 
 
 def main():
     t1 = team_score(get_name())
-    print (t1)
+    t2 = team_score(get_name())
+    print (t1.four_factor_analysis())
+    print (t2.four_factor_analysis())
 
 if __name__ == "__main__":
     main()
