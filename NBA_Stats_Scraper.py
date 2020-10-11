@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 standing_URL = 'https://www.espn.com/nba/standings'
 tradition_stats_URL = 'https://www.espn.com/nba/stats/team/_/season/2020/seasontype/2'
+tradition_opp_URL = 'https://www.espn.com/nba/stats/team/_/view/opponent/season/2020/seasontype/2'
 
 class NBA_Stats_Scraper:
 
@@ -134,19 +135,15 @@ class NBA_Stats_Scraper:
         team_all_stats = nba.hash_combine_helper(team_standing_total, team_traditional_total)
         return team_all_stats
 
+    def get_opp_stats(self):
+        nba = NBA_Stats_Scraper()
+        team_name = nba.espn_team_name_traditional(tradition_opp_URL)
+        team_stat = nba.espn_stats_table_traditional(tradition_opp_URL)
+        opp_stats = nba.stats_combine(team_name, team_stat)
+        return opp_stats
+
 
 def main():
-    # nba = NBA_Stats_Scraper()
-    # team_standing = nba.espn_team_name_standing(standing_URL)
-    # team_standing_stats = nba.espn_stats_table_standing(standing_URL)
-    # team_standing_total = nba.stats_combine(team_standing, team_standing_stats)
-    #
-    # team_traditional = nba.espn_team_name_traditional(tradition_stats_URL)
-    # team_traditional_stats = nba.espn_stats_table_traditional(tradition_stats_URL)
-    # team_traditional_total = nba.stats_combine(team_traditional, team_traditional_stats)
-    #
-    # team_all_stats = nba.hash_combine_helper(team_standing_total, team_traditional_total)
-    # print ((team_all_stats.get("Houston Rockets").get("W")))
     exit(0)
 
 if __name__ == "__main__":
