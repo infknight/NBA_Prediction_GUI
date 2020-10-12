@@ -27,7 +27,7 @@ def get_name():
 # print (total_team_stats.get(get_name()).get("W"))
 
 # oop class called team score that use fuzzy logic algorithms to compute some numbers
-class team_score:
+class analysis:
     # input name and get all the scores I need
     team_name = None
     win_percentage = 0.0 # PCT
@@ -71,8 +71,8 @@ class team_score:
 
 
 def main():
-    t1 = team_score(get_name())
-    t2 = team_score(get_name())
+    t1 = analysis(get_name())
+    t2 = analysis(get_name())
     print (t1.four_factor_analysis())
     print (t2.four_factor_analysis())
 
