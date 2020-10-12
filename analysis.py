@@ -6,7 +6,7 @@ total_team_stats = nba_class.get_all_stats()
 opp_stats = nba_class.get_opp_stats()
 
 
-def convert_float_type(self, x):
+def convert_float_type(x):
     return float(x)
 
 def get_name():
@@ -33,7 +33,7 @@ class team_score:
     win_percentage = 0.0 # PCT
     field_goal_pt = 0.0 # FG%
     turn_over = 0.0 # TO
-    rebound = 0.0 # REB
+    off_rebound = 0.0 # REB
     free_throw = 0.0 # FT%
 
     opp_field_goal_pt = 0.0 # FG%
@@ -47,18 +47,20 @@ class team_score:
         self.win_percentage = total_team_stats.get(team).get("PCT")
         self.field_goal_pt = total_team_stats.get(team).get("FG%")
         self.turn_over = total_team_stats.get(team).get("TO")
-        self.rebound = total_team_stats.get(team).get("REB")
+        self.rebound = total_team_stats.get(team).get("OR")
         self.free_throw = total_team_stats.get(team).get("FT%")
         # this is the opponent stats
         self.opp_field_goal_pt = opp_stats.get(team).get("FG%")
         self.opp_turn_over = opp_stats.get(team).get("TO")
-        self.opp_rebound = opp_stats.get(team).get("REB")
+        self.opp_rebound = opp_stats.get(team).get("DR")
         self.opp_free_throw = opp_stats.get(team).get("FT%")
 
 
 
     def four_factor_analysis(self):
-        projected_wins = 40 * convert_float_type(self.field_goal_pt)
+        team_factors = 40 * convert_float_type(self.field_goal_pt) - 25 * convert_float_type(self.turn_over) + 20 * convert_float_type(self.rebound) + 15 * convert_float_type(self.free_throw)
+        opp_factors = -40 * convert_float_type(self.opp_field_goal_pt) + 25 * convert_float_type(self.opp_turn_over) + 20 * convert_float_type(self.opp_rebound) - 10 * convert_float_type(self.opp_free_throw)
+        return team_factors + opp_factors
         # return self.convert_float_type(self.field_goal_pt) * 0.4 + self.convert_float_type(self.turn_over) * 0.25 + self.convert_float_type(self.rebound) * 0.2 + self.convert_float_type(self.free_throw) * 0.15
         # return float(self.field_goal_pt) * 0.4 + float(self.turn_over) * 0.25 + float(self.rebound * 0.2) + float(self.free_throw) * 0.15
 
