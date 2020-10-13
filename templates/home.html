@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
+    <h1>Home page</h1>
     {% for key, value in team.items() %}
-        <h1>{{ key }}</h1>
+        <table>
+            <th>
+                <tr>{{ key }}</tr>
+            </th>
+        </table>
+
     {% endfor %}
 {% endblock content %}
