@@ -4,14 +4,26 @@ from analysis import analysis
 app = Flask(__name__)
 
 nba = NBA_Stats_Scraper()
-post = nba.get_all_stats()
+team = nba.get_all_stats()
+
+# posts= [
+#     {
+#         'author' :'a',
+#         'title' : 'b a'
+#     }
+# ]
+
+print (type(team))
 
 @app.route("/")
 @app.route("/home")
-
+# debug mode in flask: export FLASK_DEBUG=1
 def home():
-    return render_template('home.html', posts=post)
+    return render_template("home.html", team=team)
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 if __name__ == 'main':
     app.run(debug = True)
