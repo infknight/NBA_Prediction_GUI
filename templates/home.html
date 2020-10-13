@@ -1,12 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Home page</h1>
-    {% for key, value in team.items() %}
-        <table>
-            <th>
-                <tr>{{ key }}</tr>
-            </th>
-        </table>
-
-    {% endfor %}
+    <select name = team method = "GET" action = "/">
+        {% for key, value in team.items() %}
+            <option value = "{{ key }}" SELECTED> {{ key }} </option>
+        {% endfor %}
+    </select>
 {% endblock content %}

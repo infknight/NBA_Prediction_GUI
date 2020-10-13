@@ -6,12 +6,6 @@ app = Flask(__name__)
 nba = NBA_Stats_Scraper()
 team = nba.get_all_stats()
 
-# posts= [
-#     {
-#         'author' :'a',
-#         'title' : 'b a'
-#     }
-# ]
 
 print (type(team))
 
