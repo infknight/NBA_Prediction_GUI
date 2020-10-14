@@ -8,8 +8,10 @@
     </select>
 
     <select name = team method = "GET" action = "/">
-        {% for key, value in team.items() %}
-            <option value = "{{ value }}" SELECTED> {{ value }} </option>
+        {% for key, team in team.items() %}
+            {% for key2, nested_value in team.items() %}
+                <option value = "{{ nested_value }}" SELECTED> {{ key2 }} </option>
+            {% endfor %}
         {% endfor %}
     </select>
 {% endblock content %}
