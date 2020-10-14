@@ -6,4 +6,10 @@
             <option value = "{{ key }}" SELECTED> {{ key }} </option>
         {% endfor %}
     </select>
+
+    <select name = team method = "GET" action = "/">
+        {% for key, value in team.items() %}
+            <option value = "{{ value }}" SELECTED> {{ value }} </option>
+        {% endfor %}
+    </select>
 {% endblock content %}
