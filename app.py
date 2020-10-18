@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for,  flash, redirect
 from NBA_Stats_Scraper import NBA_Stats_Scraper
 from forms import account, LoginForm
 from analysis import analysis
@@ -25,9 +25,14 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=['GET','POST'])
 def register():
     form = account()
+    # we need to check if user create account is validate
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!','Success')
+    # we also need to redirect user to home page
+        return redirect(url_for('home'))
     return render_template('register.html', title = 'Register', form = form)
 
 
