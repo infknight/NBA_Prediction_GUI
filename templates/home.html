@@ -1,20 +1,17 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Home page</h1>
-    <select name = team method = "GET" action = "/">
-        {% for key, value in team.items() %}
-            <option value = "{{ key }}" SELECTED> {{ key }} </option>
-        {% endfor %}
-    </select>
-
-    <select name = team method = "GET" action = "/">
-        {% for key, team in team.items() %}
-            {% for key2, nested_value in team.items() %}
-                <option value = "{{ nested_value }}" SELECTED> {{ key2 }} </option>
-            {% endfor %}
-        {% endfor %}
-<!--        {% for key in team %}-->
-<!--            <option value = "{{ team[key] }}" SELECTED> {{ team[key] }} </option>-->
+<!--    <select name = team method = "GET" action = "/">-->
+<!--        {% for key, value in team.items() %}-->
+<!--            <option value = "{{ key }}" SELECTED> {{ key }} </option>-->
 <!--        {% endfor %}-->
-    </select>
+<!--    </select>-->
+
+<!--    <select name = team method = "GET" action = "/">-->
+<!--        {% for key, team in team.items() %}-->
+<!--            {% for key2, nested_value in team.items() %}-->
+<!--                <option value = "{{ nested_value }}" SELECTED> {{ key2 }} </option>-->
+<!--            {% endfor %}-->
+<!--        {% endfor %}-->
+<!--    </select>-->
 {% endblock content %}

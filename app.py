@@ -8,7 +8,7 @@ nba = NBA_Stats_Scraper()
 team = nba.get_all_stats()
 
 # this is the serects numbers
-app.config['SECTRT_KEY'] = 'ea7b11f0714027a81e7f81404612d80d'
+app.config['SECRET_KEY'] = 'ea7b11f0714027a81e7f81404612d80d'
 
 print (type(team))
 
