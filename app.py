@@ -1,6 +1,5 @@
 from flask import Flask, render_template, url_for,  flash, redirect
 from NBA_Stats_Scraper import NBA_Stats_Scraper
-from forms import account, LoginForm
 from analysis import analysis
 app = Flask(__name__)
 
@@ -15,8 +14,8 @@ app.config['SECRET_KEY'] = 'ea7b11f0714027a81e7f81404612d80d'
 @app.route("/")
 @app.route("/home")
 # debug mode in flask:  export FLASK_DEBUG=1
-def home():
-    return render_template("home.html", team=team)
+def home(): 
+    return render_template("layout.html", team=team)
 
 
 
