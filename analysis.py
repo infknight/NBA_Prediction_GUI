@@ -24,6 +24,11 @@ def get_name():
     x = int(x)
     return name_list[x - 1]
 
+def team_name():
+    res = []
+    for name in total_team_stats.keys():
+        res.append(name)
+    return res
 # print (total_team_stats.get(get_name()).get("W"))
 
 # oop class called team score that use fuzzy logic algorithms to compute some numbers
