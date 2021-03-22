@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = 'ea7b11f0714027a81e7f81404612d80d'
 @app.route("/home")
 # debug mode in flask:  export FLASK_DEBUG=1
 def home(): 
-    return render_template("layout.html", team=team)
+    return render_template("home.html", team = team)
 
 
 
