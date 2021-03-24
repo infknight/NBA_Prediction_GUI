@@ -1,9 +1,34 @@
 body{
-  height: 100%;
+  height: auto;
+  width: auto;
   background-color: black;
+  text-align: center;
 }
 
 #sec_header{
   text-align: center;
   color: white;
+  height: 75%;
+}
+
+#nba_logo{
+  height: 70%;
+  width: 70%;
+}
+
+#compare{
+  text-align: center;
+  background-color: #17408B;
+  padding-bottom: 50%;
+}
+
+.team{
+  width: 30%;
+  display: inline-block;
+  margin: 2% auto;
+
+}
+
+#compare{
+  margin: 0 auto;
 }
