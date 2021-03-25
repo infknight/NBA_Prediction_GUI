@@ -34,12 +34,24 @@
     <section id="compare">
         <div class="row">
             <div class="team col-lg-4 col-sm-12 col-12">
-              <p>team</p>
+              <div class="team_selection">
+                <select name="team" method="GET" action="/">
+                  {% for team in team[0:] %}
+                    <option value="{{team}}" id="{{team}}">{{team}}</option>
+                  {% endfor %}
+                </select>
+              </div>
             </div>
 
-
+            
             <div class="team col-lg-4 col-sm-12 col-12">
-              <p>team</p>
+              <div class="team_selection">
+                <select name="team" method="GET" action="/">
+                  {% for team in team[0:] %}
+                    <option value="{{team}}" id="{{team}}">{{team}}</option>
+                  {% endfor %}
+                </select>
+              </div>
             </div>
 
         </div>

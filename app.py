@@ -14,8 +14,8 @@ app.config['SECRET_KEY'] = 'ea7b11f0714027a81e7f81404612d80d'
 
 
 # this is the home page
-@app.route("/")
-@app.route("/home")
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/home", methods=['GET', 'POST'])
 # debug mode in flask:  export FLASK_DEBUG=1
 # export FLASK_APP=app
 # export FLASK_ENV=development
