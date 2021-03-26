@@ -34,23 +34,29 @@
     <section id="compare">
         <div class="row">
             <div class="team col-lg-4 col-sm-12 col-12">
-              <div class="team_selection">
-                <select name="team" method="GET" action="/">
+              <div class="btn-group dropup">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select A Team
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" method="GET" action="/">
                   {% for team in team[0:] %}
-                    <option value="{{team}}" id="{{team}}">{{team}}</option>
+                    <a class="dropdown-item" value="{{team}}">{{ team }}</a>
                   {% endfor %}
-                </select>
+                </div>
               </div>
             </div>
 
             
             <div class="team col-lg-4 col-sm-12 col-12">
-              <div class="team_selection">
-                <select name="team" method="GET" action="/">
+              <div class="btn-group dropup">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select A Team
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" method="GET" action="/">
                   {% for team in team[0:] %}
-                    <option value="{{team}}" id="{{team}}">{{team}}</option>
+                    <a class="dropdown-item" value="{{team}}">{{ team }}</a>
                   {% endfor %}
-                </select>
+                </div>
               </div>
             </div>
 
