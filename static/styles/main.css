@@ -32,3 +32,15 @@ body{
 #compare{
   margin: 15% auto;
 }
+
+.form-select{
+  position: relative;
+  background-color: gray;
+  height: 150%;
+  width: 100%;
+  text-align-last: center;
+}
+
+.selectname{
+  text-align: center;
+}

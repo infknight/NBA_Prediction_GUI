@@ -40,14 +40,15 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" method="GET" action="/">
                   {% for team in team[0:] %}
-                    <a class="dropdown-item" value="{{team}}">{{ team }}</a> 
+                    <option class="dropdown-item" value="{{team}}">{{ team }}</a> 
                   {% endfor %}
                 </div>
               </div> -->
+
+              
               <select class="form-select" aria-label="Default select example">
-                <option selected>Select A Team</option>
+                <option selected class="selectname">Select A Team</option>
                 {% for team in team[0:] %}
-                  <a class="dropdown-item" value="{{team}}">{{ team }}</a> 
                   <option value="team1">{{ team }} </option>
                 {% endfor %}
               </select>
@@ -55,7 +56,7 @@
 
             
             <div class="team col-lg-4 col-sm-12 col-12">
-              <div class="btn-group dropup">
+              <!-- <div class="btn-group dropup">
                 <button class="btn btn-secondary dropdown-toggle teamBbtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Select A Team
                 </button>
@@ -64,7 +65,13 @@
                     <a class="dropdown-item" value="{{team}}">{{ team }}</a>
                   {% endfor %}
                 </div>
-              </div>
+              </div> --> 
+              <select class="form-select" aria-label="Default select example">
+                <option selected class="selectname">Select A Team</option>
+                {% for team in team[0:] %}
+                  <option value="team1">{{ team }} </option>
+                {% endfor %}
+              </select>
             </div>
 
         </div>

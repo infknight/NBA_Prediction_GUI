@@ -1,5 +1,9 @@
 document.getElementsByClassName("teamBbtn")[0]; 
-alert("here"); 
-var selectElement = document.getElementsByClassName("dropdown-item");
 
+
+var selectElement = document.getElementsByClassName("dropdown-item").addEventListener("click", handleClick);
+
+function handleClick(){
+    alert("Clicked"); 
+}
 console.log(selectElement)
