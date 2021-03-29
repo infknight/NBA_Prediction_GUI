@@ -3,7 +3,7 @@
     <section id="sec_header">
         <h1>Predict your NBA stats</h1>
         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg navbar-dark">
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
                 <a class="navbar-brand" href="#sec_header">NBA</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -11,10 +11,10 @@
                 <div class="collapse navbar-collapse" id="narbarleft">
                   <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="#sec_header">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Predict</a>
+                      <a class="nav-link" href="#compare">Predict</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">Live Games</a>
@@ -46,32 +46,29 @@
               </div> -->
 
               
-              <select class="form-select" aria-label="Default select example">
-                <option selected class="selectname">Select A Team</option>
+              <select class="form-select" aria-label="Default select example" id="teamApic">
+                <option selected id="selectnameA">Select A Team</option>
                 {% for team in team[0:] %}
-                  <option value="team1">{{ team }} </option>
+                  <option value="{{ team }}" id="teamone">{{ team }} </option>
                 {% endfor %}
               </select>
+              <button type="button" class="btn btn-warning" onclick="getname('teamApic')">Confirm</button>
+
+              <img class="teampic" src="/static/images/default_basketball.jpeg" alt="basetball">
             </div>
 
             
             <div class="team col-lg-4 col-sm-12 col-12">
-              <!-- <div class="btn-group dropup">
-                <button class="btn btn-secondary dropdown-toggle teamBbtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select A Team
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" method="GET" action="/">
-                  {% for team in team[0:] %}
-                    <a class="dropdown-item" value="{{team}}">{{ team }}</a>
-                  {% endfor %}
-                </div>
-              </div> --> 
-              <select class="form-select" aria-label="Default select example">
+              <button type="button" class="btn btn-warning" onclick="getname('teamBpic')">Confirm</button>
+
+              <select class="form-select" aria-label="Default select example" id="teamBpic">
                 <option selected class="selectname">Select A Team</option>
                 {% for team in team[0:] %}
-                  <option value="team1">{{ team }} </option>
+                  <option value="team2">{{ team }} </option>
                 {% endfor %}
               </select>
+
+              <img class="teampic" src="/static/images/default_basketball.jpeg" alt="basetball">
             </div>
 
         </div>

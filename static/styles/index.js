@@ -1,9 +1,14 @@
-document.getElementsByClassName("teamBbtn")[0]; 
+// document.getElementsByClassName("teamBbtn")[0]; 
 
 
-var selectElement = document.getElementsByClassName("dropdown-item").addEventListener("click", handleClick);
-
-function handleClick(){
-    alert("Clicked"); 
+function getname(ID_NAME){
+    var x = document.getElementById(ID_NAME).value; 
+    if(x == "Philadelphia 76ers"){
+        console.log("76er"); 
+    }
+    if(x == "Brooklyn Nets"){
+        console.log("nets");
+    }
 }
-console.log(selectElement)
+
+

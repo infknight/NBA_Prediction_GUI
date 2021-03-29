@@ -36,11 +36,16 @@ body{
 .form-select{
   position: relative;
   background-color: gray;
-  height: 150%;
-  width: 100%;
+  height: 3rem;
+  width: 15rem;
   text-align-last: center;
 }
 
-.selectname{
+#selectnameA{
   text-align: center;
+}
+
+.teampic{
+  padding: 8%;
+  width: 60%;
 }
