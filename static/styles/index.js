@@ -11,18 +11,15 @@ function getname(ID_NAME){
     }
     console.log(x)
 
-    var picpath = "/static/images/teamlogo/" + x +".png"
-    document.querySelectorAll(".teampic")[i].src = picpath;
 
+    if(x === "Philadelphia 76ers"){
+        document.querySelectorAll(".teampic")[i].src = "/static/images/teamlogo/philadelphia_76ers.png"
+        console.log("76er"); 
+    }
+    if(x === "Brooklyn Nets"){
 
-    // if(x === "Philadelphia 76ers"){
-    //     document.querySelectorAll(".teampic")[i].src = "/static/images/teamlogo/philadelphia_76ers.png"
-    //     console.log("76er"); 
-    // }
-    // if(x === "Brooklyn Nets"){
-
-    //     console.log("nets");
-    // }
+        console.log("nets");
+    }
 }
 
 

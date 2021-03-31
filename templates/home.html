@@ -35,8 +35,6 @@
         <div class="row">
             <div class="team col-lg-4 col-sm-12 col-12">
 
-
-              
               <select class="form-select" aria-label="Default select example" id="teamApic">
                 <option selected id="selectnameA">Select A Team</option>
                 {% for team in team[0:] %}
@@ -50,15 +48,15 @@
 
             
             <div class="team col-lg-4 col-sm-12 col-12">
-              <button type="button" class="btn btn-warning" onclick="getname('teamBpic')">Confirm</button>
 
               <select class="form-select" aria-label="Default select example" id="teamBpic">
                 <option selected class="selectname">Select A Team</option>
                 {% for team in team[0:] %}
                   <option value="{{ team }}">{{ team }} </option>
                 {% endfor %}
-              </select>
 
+              </select>
+              <button type="button" class="btn btn-warning" onclick="getname('teamBpic')">Confirm</button>
               <img class="teampic" src="/static/images/default_basketball.jpeg" alt="basetball">
             </div>
 

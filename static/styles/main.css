@@ -36,8 +36,8 @@ body{
 .form-select{
   position: relative;
   background-color: gray;
-  height: 3rem;
-  width: 15rem;
+  height: 25%;
+  width: 100%;
   text-align-last: center;
 }
 
