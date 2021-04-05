@@ -35,21 +35,33 @@
         <div class="row">
             <div class="team col-lg-4 col-sm-12 col-12">
 
-              <select class="form-select" aria-label="Default select example" id="teamApic">
-                <option selected id="selectnameA">Select A Team</option>
-                {% for team in team[0:] %}
-                  <option value="{{ team }}" id="teamone">{{ team }} </option>
-                {% endfor %}
-              </select>
-              <button type="button" class="btn btn-warning" onclick="getname('teamApic')">Confirm</button>
 
+              <form name="Teamone" method="POST">
+                <select name = "teamApic" class="form-select" aria-label="Default select example" id="teamApic">
+                  <option selected id="selectnameA">Select A Team</option>
+                  {% for team in team[0:] %}
+                    <option value="{{ team }}" id="teamone">{{ team }} </option>
+                  {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-warning" onclick="getname('teamApic')">Confirm</button>
+              </form>
               <img class="teampic" src="/static/images/default_basketball.jpeg" alt="basetball">
             </div>
 
+
+            <div id="result">
+              {% if teamone is defined %}
+                You have selected: {{ teamone }}
+              {% endif %}
+            </div>
             
+
+
+
+
             <div class="team col-lg-4 col-sm-12 col-12">
 
-              <select class="form-select" aria-label="Default select example" id="teamBpic">
+              <select class="form-select" aria-label="Default select example" id="teamBpic" method="POST">
                 <option selected class="selectname">Select A Team</option>
                 {% for team in team[0:] %}
                   <option value="{{ team }}">{{ team }} </option>
